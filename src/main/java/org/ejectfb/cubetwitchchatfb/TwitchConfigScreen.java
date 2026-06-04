@@ -52,8 +52,8 @@ public final class TwitchConfigScreen extends Screen {
         context.drawCenteredTextWithShadow(this.textRenderer, this.title, this.width / 2, 20, 0xFFFFFF);
         if (enabled) {
             context.drawTextWithShadow(this.textRenderer, "enabled=true", this.width / 2 - 150, 88, 0xAA55FF);
-            context.drawTextWithShadow(this.textRenderer, "Введите ник стримера на Twitch, чтобы его чат", this.width / 2 - 150, 126, 0xA0A0A0);
-            context.drawTextWithShadow(this.textRenderer, "показывался в чате игры", this.width / 2 - 150, 138, 0xA0A0A0);
+            context.drawTextWithShadow(this.textRenderer, "Enter a Twitch streamer's channel name", this.width / 2 - 150, 126, 0xA0A0A0);
+            context.drawTextWithShadow(this.textRenderer, "to show their chat in Minecraft", this.width / 2 - 150, 138, 0xA0A0A0);
         }
     }
 
