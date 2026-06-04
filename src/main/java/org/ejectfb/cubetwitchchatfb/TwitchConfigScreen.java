@@ -5,7 +5,9 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
+import net.minecraft.client.gui.widget.TextWidget;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 
 public final class TwitchConfigScreen extends Screen {
     private final Screen parent;
@@ -13,6 +15,8 @@ public final class TwitchConfigScreen extends Screen {
     private TextFieldWidget urlField;
     private ButtonWidget toggleButton;
     private ButtonWidget applyButton;
+    private TextWidget descriptionLine1;
+    private TextWidget descriptionLine2;
 
     public TwitchConfigScreen(Screen parent) {
         super(Text.literal("Twitch Chat"));
@@ -34,12 +38,18 @@ public final class TwitchConfigScreen extends Screen {
         }).dimensions(center - 100, 56, 200, 20).build();
         addDrawableChild(toggleButton);
 
-        urlField = new TextFieldWidget(this.textRenderer, center - 150, 104, 260, 20, Text.literal("Twitch channel"));
+        descriptionLine1 = new TextWidget(center - 150, 100, 300, 9, Text.literal("Enter a Twitch streamer's channel name").formatted(Formatting.WHITE), this.textRenderer);
+        addDrawableChild(descriptionLine1);
+
+        descriptionLine2 = new TextWidget(center - 150, 112, 300, 9, Text.literal("to show their chat in Minecraft").formatted(Formatting.WHITE), this.textRenderer);
+        addDrawableChild(descriptionLine2);
+
+        urlField = new TextFieldWidget(this.textRenderer, center - 150, 126, 260, 20, Text.literal("Twitch channel"));
         urlField.setMaxLength(2048);
         urlField.setText(config.twitchChannel());
         addDrawableChild(urlField);
 
-        applyButton = ButtonWidget.builder(Text.literal("✓"), button -> apply()).dimensions(center + 116, 104, 34, 20).build();
+        applyButton = ButtonWidget.builder(Text.literal("✓"), button -> apply()).dimensions(center + 116, 126, 34, 20).build();
         addDrawableChild(applyButton);
 
         addDrawableChild(ButtonWidget.builder(Text.literal("Done"), button -> close()).dimensions(center - 100, this.height - 32, 200, 20).build());
@@ -50,11 +60,6 @@ public final class TwitchConfigScreen extends Screen {
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         super.render(context, mouseX, mouseY, delta);
         context.drawCenteredTextWithShadow(this.textRenderer, this.title, this.width / 2, 20, 0xFFFFFF);
-        if (enabled) {
-            context.drawTextWithShadow(this.textRenderer, "enabled=true", this.width / 2 - 150, 88, 0xAA55FF);
-            context.drawTextWithShadow(this.textRenderer, "Enter a Twitch streamer's channel name", this.width / 2 - 150, 126, 0xA0A0A0);
-            context.drawTextWithShadow(this.textRenderer, "to show their chat in Minecraft", this.width / 2 - 150, 138, 0xA0A0A0);
-        }
     }
 
     @Override
@@ -71,6 +76,8 @@ public final class TwitchConfigScreen extends Screen {
         urlField.active = enabled;
         applyButton.visible = enabled;
         applyButton.active = enabled;
+        descriptionLine1.visible = enabled;
+        descriptionLine2.visible = enabled;
     }
 
     private void apply() {
