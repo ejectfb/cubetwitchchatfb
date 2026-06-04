@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "org.ejectfb.cubetwitchchatfb.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "ChatOptionsScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

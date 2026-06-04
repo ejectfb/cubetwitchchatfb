@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "ejectfbcubetwitchchat",
+  "version": "${version}",
+  "name": "EjectFB CubeTwitchChatFB",
+  "description": "Shows public Twitch chat messages from the selected streamer in the Minecraft chat.",
+  "icon": "assets/ejectfbcubetwitchchat/icon.png",
+  "authors": ["EjectFB"],
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "org.ejectfb.cubetwitchchatfb.TwitchCubeChatClient"
+    ]
+  },
+  "mixins": [
+    "ejectfbcubetwitchchat.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.17.3",
+    "minecraft": "1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
