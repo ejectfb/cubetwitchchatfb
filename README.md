@@ -1,6 +1,6 @@
 # EjectFB CubeTwitchChatFB
 
-Client-side Fabric mod for Minecraft 1.21.11. It mirrors public Twitch chat messages into the normal Minecraft chat without Twitch API tokens.
+Client-side Fabric mod for Minecraft 1.20.1. It mirrors public Twitch chat messages into the normal Minecraft chat without Twitch API tokens.
 
 Messages are rendered as:
 

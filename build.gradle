@@ -1,19 +1,19 @@
 plugins {
-    id 'fabric-loom' version '1.14.10'
+    id 'fabric-loom' version '1.10.5'
     id 'maven-publish'
 }
 
-version = '1.0.1'
+version = '1.0.1+1.20.1'
 group = 'org.ejectfb.cubetwitchchatfb'
 
 base {
     archivesName = 'ejectfb-cubetwitchchatfb'
 }
 
-def minecraftVersion = '1.21.11'
-def fabricLoaderVersion = '0.17.3'
-def fabricApiVersion = '0.139.0+1.21.11'
-def yarnMappings = '1.21.11+build.1'
+def minecraftVersion = '1.20.1'
+def fabricLoaderVersion = '0.16.14'
+def fabricApiVersion = '0.92.6+1.20.1'
+def yarnMappings = '1.20.1+build.10'
 
 dependencies {
     minecraft "com.mojang:minecraft:${minecraftVersion}"
@@ -31,14 +31,14 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    options.release = 21
+    options.release = 17
     options.encoding = 'UTF-8'
 }
 
 java {
     withSourcesJar()
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 jar {
